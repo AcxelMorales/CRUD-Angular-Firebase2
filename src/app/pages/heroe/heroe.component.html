@@ -1,0 +1,64 @@
+<h1>Héroe <small>Name</small></h1>
+<hr>
+<div class="row">
+  <div class="col text-right">
+    <button class="btn btn-danger mb-3" [routerLink]="['/']">
+      <i class="fa fa-arrow-left"></i> Regresar
+    </button>
+  </div>
+</div>
+<div class="row animated fadeIn">
+  <div class="col">
+    <form #f="ngForm" (ngSubmit)="save(f)">
+      <div class="form-group">
+        <label>Firebase ID</label>
+        <input type="text"
+               class="form-control"
+               disabled="disabled"
+               name="id"
+               placeholder="Firebase ID"
+               [(ngModel)]="heroe.id">
+        <small class="form-text text-muted">Este campo es autogenerado</small>
+      </div>
+      <div class="form-group">
+        <label>Nombre del héroe</label>
+        <input type="text"
+               class="form-control"
+               name="nombre"
+               placeholder="Nombre del héroe"
+               required
+               [(ngModel)]="heroe.nombre">
+      </div>
+      <div class="form-group">
+        <label>Poder</label>
+        <input type="text"
+               class="form-control"
+               name="poder"
+               placeholder="Poder del héroe"
+               [(ngModel)]="heroe.poder">
+      </div>
+      <div class="form-group">
+        <label>Estado</label>
+        <br>
+        <button *ngIf="heroe.vivo"
+                (click)="heroe.vivo = false"
+                class="btn btn-outline-success w-25"
+                type="button">
+          <i class="fa fa-smile-wink"></i> Vivo
+        </button>
+        <button *ngIf="!heroe.vivo"
+                (click)="heroe.vivo = true"
+                class="btn btn-outline-danger w-25"
+                type="button">
+          <i class="fa fa-dizzy"></i> Muerto
+        </button>
+      </div>
+      <hr>
+      <div class="form-group text-center">
+        <button type="submit" class="btn btn-primary w-25">
+          <i class="fa fa-save"></i> Guardar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
